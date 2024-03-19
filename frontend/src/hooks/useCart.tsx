@@ -1,26 +1,27 @@
 import { useEffect, useState } from 'react'
 
 import { ENDPOINT } from '../config/constans'
+import { type Cart, type Product, type PropsUseCart } from '../interfaces/interfaces'
 
-export const useCart = () => {
-  const [user, setUser] = useState({ email: '', password: '' })
-  const [productos, setProductos] = useState([])
-  const [cart, setCart] = useState([])
-  const [total, setTotal] = useState('0')
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [token, setToken] = useState('')
+export const useCart = (): PropsUseCart => {
+  const [user, setUser] = useState<{ email: string, password: string }>({ email: '', password: '' })
+  const [productos, setProductos] = useState<Product[]>([])
+  const [cart, setCart] = useState<Cart[]>([])
+  const [total, setTotal] = useState<string>('0')
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
+  const [token, setToken] = useState<string>('')
 
-  const login = (jwt) => {
+  const login = (jwt: string): void => {
     setIsAuthenticated(true)
     setToken(jwt)
   }
 
-  const logout = () => {
+  const logout = (): void => {
     setIsAuthenticated(false)
     setToken('')
   }
 
-  const getProducts = async () => {
+  const getProducts = async (): Promise<void> => {
     try {
       const response = await fetch(ENDPOINT.products)
       const products = await response.json()
@@ -37,7 +38,7 @@ export const useCart = () => {
     getProducts()
   }, [])
 
-  const addCart = (producto) => {
+  const addCart = (producto: Product) => {
     setTotal(+total + +producto.precio)
 
     const productoInCart = cart.findIndex((item) => item.id === producto.id)
@@ -58,12 +59,12 @@ export const useCart = () => {
     ])
   }
 
-  const clearCart = () => {
+  const clearCart = (): void => {
     setCart([])
     setTotal('0')
   }
 
-  const removeFromCart = (producto) => {
+  const removeFromCart = (producto: Product): void => {
     const newCart = cart.flatMap((p) => {
       if (p.id === producto.id) {
         setTotal(+total - +producto.precio)
@@ -78,7 +79,7 @@ export const useCart = () => {
     setCart(newCart)
   }
 
-  const addOneMore = (producto) => {
+  const addOneMore = (producto: Product): any => {
     setTotal(+total + +producto.precio)
     const productoInCart = cart.findIndex((item) => item.id === producto.id)
 
