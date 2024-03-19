@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react'
 
 import { ENDPOINT } from '../config/constans'
 import { type Cart, type Product, type PropsUseCart } from '../interfaces/interfaces'
+export interface ApiResponse {
+  code: number
+  message: string
+}
 
 export const useCart = (): PropsUseCart => {
   const [user, setUser] = useState<{ email: string, password: string }>({ email: '', password: '' })
@@ -21,7 +25,7 @@ export const useCart = (): PropsUseCart => {
     setToken('')
   }
 
-  const getProducts = async (): Promise<void> => {
+  const getProducts = async () => {
     try {
       const response = await fetch(ENDPOINT.products)
       const products = await response.json()
@@ -98,10 +102,14 @@ export const useCart = (): PropsUseCart => {
     token,
     login,
     logout,
+    getProducts,
     productos,
+    setProductos,
     total,
+    setTotal,
     cart,
     addCart,
+    setCart,
     addOneMore,
     clearCart,
     removeFromCart

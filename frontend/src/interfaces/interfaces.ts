@@ -26,7 +26,7 @@ export interface PropsUseCart {
   setTotal: React.Dispatch<React.SetStateAction<string>>
   login: (jwt: string) => void
   logout: () => void
-  getProducts: () => void
+  getProducts: () => Promise<void>
   addCart: (producto: Product) => void
   clearCart: () => void
   removeFromCart: (producto: Product) => void
