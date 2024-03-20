@@ -1,7 +1,9 @@
 import React from 'react'
 
-export const NewProduct: React.FC = () => {
+const NewProduct: React.FC = () => {
   return (
     <div>NewProduct</div>
   )
 }
+
+export default NewProduct

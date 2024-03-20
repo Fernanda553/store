@@ -15,18 +15,13 @@ export interface Cart extends Product {
 }
 export interface PropsUseCart {
   user: User
-  setUser: React.Dispatch<React.SetStateAction<User>>
   productos: Product[]
-  setProductos: React.Dispatch<React.SetStateAction<Product[]>>
   isAuthenticated: boolean
   token: string
   cart: Cart[]
-  setCart: React.Dispatch<React.SetStateAction<Cart[]>>
-  total: string
-  setTotal: React.Dispatch<React.SetStateAction<string>>
+  total: number
   login: (jwt: string) => void
   logout: () => void
-  getProducts: () => Promise<void>
   addCart: (producto: Product) => void
   clearCart: () => void
   removeFromCart: (producto: Product) => void

@@ -1,19 +1,16 @@
+import axios from 'axios'
 import { useEffect, useState } from 'react'
 
 import { ENDPOINT } from '../config/constans'
-import { type Cart, type Product, type PropsUseCart } from '../interfaces/interfaces'
-export interface ApiResponse {
-  code: number
-  message: string
-}
+import { type Product, type PropsUseCart } from '../interfaces/interfaces'
 
-export const useCart = (): PropsUseCart => {
-  const [user, setUser] = useState<{ email: string, password: string }>({ email: '', password: '' })
-  const [productos, setProductos] = useState<Product[]>([])
-  const [cart, setCart] = useState<Cart[]>([])
-  const [total, setTotal] = useState<string>('0')
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
-  const [token, setToken] = useState<string>('')
+export const useCart = () => {
+  const [user, setUser] = useState<PropsUseCart['user']>({ email: '', password: '' })
+  const [productos, setProductos] = useState<PropsUseCart['productos']>([])
+  const [cart, setCart] = useState<PropsUseCart['cart']>([])
+  const [total, setTotal] = useState<PropsUseCart['total']>(0)
+  const [isAuthenticated, setIsAuthenticated] = useState<PropsUseCart['isAuthenticated']>(false)
+  const [token, setToken] = useState<PropsUseCart['token']>('')
 
   const login = (jwt: string): void => {
     setIsAuthenticated(true)
@@ -25,24 +22,22 @@ export const useCart = (): PropsUseCart => {
     setToken('')
   }
 
-  const getProducts = async () => {
-    try {
-      const response = await fetch(ENDPOINT.products)
-      const products = await response.json()
-      if (products?.code) {
-        throw new Error(products.message)
-      }
-      setProductos(products)
-    } catch (error) {
-      console.error(error)
-    }
+  const getProducts = () => {
+    axios
+      .get(ENDPOINT.products)
+      .then(response => {
+        setProductos(response.data)
+      })
+      .catch(error => {
+        console.error('Error al obtener data', error)
+      })
   }
 
   useEffect(() => {
     getProducts()
   }, [])
 
-  const addCart = (producto: Product) => {
+  const addCart = (producto: Product): void => {
     setTotal(+total + +producto.precio)
 
     const productoInCart = cart.findIndex((item) => item.id === producto.id)
@@ -65,7 +60,7 @@ export const useCart = (): PropsUseCart => {
 
   const clearCart = (): void => {
     setCart([])
-    setTotal('0')
+    setTotal(0)
   }
 
   const removeFromCart = (producto: Product): void => {
@@ -83,7 +78,7 @@ export const useCart = (): PropsUseCart => {
     setCart(newCart)
   }
 
-  const addOneMore = (producto: Product): any => {
+  const addOneMore = (producto: Product) => {
     setTotal(+total + +producto.precio)
     const productoInCart = cart.findIndex((item) => item.id === producto.id)
 
@@ -102,7 +97,6 @@ export const useCart = (): PropsUseCart => {
     token,
     login,
     logout,
-    getProducts,
     productos,
     setProductos,
     total,

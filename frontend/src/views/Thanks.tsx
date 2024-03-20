@@ -1,7 +1,9 @@
 import React from 'react'
 
-export const Thanks: React.FC = () => {
+const Thanks: React.FC = () => {
   return (
-    <div>: React.FC</div>
+    <div> Thanks!</div>
   )
 }
+
+export default Thanks
