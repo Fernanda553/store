@@ -2,7 +2,7 @@ import React from 'react'
 
 const Carrito: React.FC = () => {
   return (
-    <div>: React.FC</div>
+    <div>Carrito</div>
   )
 }
 

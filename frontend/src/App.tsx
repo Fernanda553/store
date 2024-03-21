@@ -1,10 +1,12 @@
 import React from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import StoreContext from './context/StoreContext'
 import { useCart } from './hooks/useCart'
 
 import { PublicRoute, PrivateRoute } from './routes'
 import { OneProduct, Carrito, Home, Login, NewProduct, NotFound, Profile, Register, Thanks } from './views'
+import Navigation from './components/Navigation'
 
 const App = (): JSX.Element => {
   const allState = useCart()
@@ -12,6 +14,7 @@ const App = (): JSX.Element => {
   return (
    <StoreContext.Provider value={allState}>
     <BrowserRouter>
+    <Navigation/>
     <Routes>
     <Route
             path='/'
@@ -19,7 +22,7 @@ const App = (): JSX.Element => {
           />
           <Route
             path='/carrito'
-            element={<PrivateRoute><Carrito /></PrivateRoute>}
+            element={<PublicRoute><Carrito /></PublicRoute>}
           />
           <Route
             path='/login'
