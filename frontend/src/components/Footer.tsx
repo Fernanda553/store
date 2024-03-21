@@ -2,7 +2,11 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <footer>
+      <i className='fa-brands fa-instagram fa-xl p-3' />
+      <i className='fa-brands fa-facebook fa-xl' />
+      <p >@Store</p>
+    </footer>
   )
 }
 
