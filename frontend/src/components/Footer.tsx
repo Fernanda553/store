@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
-    <footer>
+    <footer className='d-block'>
       <i className='fa-brands fa-instagram fa-xl p-3' />
       <i className='fa-brands fa-facebook fa-xl' />
       <p >@Store</p>

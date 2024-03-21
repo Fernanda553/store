@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Nav, Offcanvas } from 'react-bootstrap'
 
-const Navigation = () => {
+const Navigation: React.FC = () => {
   const [showOffcanvas, setShowOffcanvas] = useState(false)
 
   const handleOffcanvasToggle = () => setShowOffcanvas(!showOffcanvas)

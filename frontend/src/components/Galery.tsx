@@ -1,8 +1,9 @@
 import React from 'react'
+import { Container } from 'react-bootstrap'
 
-const Galery = () => {
+const Galery: React.FC = () => {
   return (
-    <div>Galery</div>
+    <Container>Galery</Container>
   )
 }
 

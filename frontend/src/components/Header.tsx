@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
 
-const Header = () => {
+const Header: React.FC = () => {
   return (
     <header style={{ height: '70px' }}>
       <Container fluid className="d-flex justify-content-center align-items-center">

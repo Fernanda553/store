@@ -7,7 +7,6 @@ import { useCart } from './hooks/useCart'
 import { PublicRoute, PrivateRoute } from './routes'
 import { OneProduct, Carrito, Home, Login, NewProduct, NotFound, Profile, Register, Thanks } from './views'
 import Navigation from './components/Navigation'
-import Footer from './components/Footer'
 
 const App = (): JSX.Element => {
   const allState = useCart()
