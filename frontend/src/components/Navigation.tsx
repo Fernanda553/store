@@ -4,7 +4,9 @@ import { Nav, Offcanvas } from 'react-bootstrap'
 const Navigation: React.FC = () => {
   const [showOffcanvas, setShowOffcanvas] = useState(false)
 
-  const handleOffcanvasToggle = () => setShowOffcanvas(!showOffcanvas)
+  const handleOffcanvasToggle = (): void => {
+    setShowOffcanvas(!showOffcanvas)
+  }
 
   return (
     <>

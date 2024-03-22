@@ -2,13 +2,13 @@ import React from 'react'
 import { Container } from 'react-bootstrap'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import Galery from '../components/Galery'
+import Gallery from '../components/Gallery'
 
 const Home: React.FC = () => {
   return (
-    <Container fluid>
+    <Container fluid className='p-0'>
       <Header/>
-      <Galery/>
+      <Gallery/>
       <Footer/>
     </Container>
   )

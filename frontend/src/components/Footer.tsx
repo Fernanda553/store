@@ -2,11 +2,17 @@ import React from 'react'
 
 const Footer: React.FC = () => {
   return (
-    <footer className='d-block'>
-      <i className='fa-brands fa-instagram fa-xl p-3' />
-      <i className='fa-brands fa-facebook fa-xl' />
-      <p >@Store</p>
-    </footer>
+    <footer style={{
+      width: '100%',
+      height: '100px',
+      backgroundColor: '#343a40',
+      color: '#fff',
+      textAlign: 'center'
+    }}>
+      <i className="fab fa-instagram fa-lg mx-3"></i>
+      <i className="fab fa-facebook fa-lg mx-3"></i>
+      <p>@Store</p>
+  </footer>
   )
 }
 

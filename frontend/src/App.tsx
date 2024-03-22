@@ -1,5 +1,6 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import './app.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import StoreContext from './context/StoreContext'
 import { useCart } from './hooks/useCart'
