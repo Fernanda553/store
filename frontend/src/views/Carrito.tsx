@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { Button, Container, Image } from 'react-bootstrap'
+import { NavLink } from 'react-router-dom'
 
 const Cart: React.FC = () => {
   const [quantity, setQuantity] = useState(1)
   const productPrice = 10 // Precio del producto
 
-  // las funciones son a modo de ejemplo para no perderme, esto tiene que con typeScript
+  // TODO: las funciones son a modo de ejemplo para no perderme, esto tiene que con typeScript
 
   const handleIncrement = () => {
     setQuantity(quantity + 1)
@@ -23,7 +24,9 @@ const Cart: React.FC = () => {
     <Container className="mt-5">
       <h2 className="text-center mb-4">Shopping Cart</h2>
       <div className="d-flex align-items-center justify-content-center mb-3">
+        <NavLink to=''>
         <Image src="https://via.placeholder.com/150" alt="Product Image" />
+        </NavLink>
         <div className="ml-3">
           <h5>Product Name</h5>
           <p>Price: ${productPrice}</p>

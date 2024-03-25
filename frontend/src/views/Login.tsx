@@ -23,7 +23,7 @@ const Login: React.FC = () => {
       </Form>
       <p className="text-center mt-3">¿Dont have an account yet?
       <br/>
-       <NavLink to=''> Create account 😄</NavLink></p>
+       <NavLink to='/register'> Create account 😄</NavLink></p>
     </Container>
   )
 }
