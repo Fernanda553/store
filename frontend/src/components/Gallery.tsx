@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Card, Container, Row } from 'react-bootstrap'
+import { NavLink } from 'react-router-dom'
 
 const Gallery: React.FC = () => {
   return (
@@ -10,14 +11,15 @@ const Gallery: React.FC = () => {
       <Row className="scroll-container justify-content-center p-0 m-0">
         <Card style={{ width: '18rem', margin: '10px' }}>
           <Card.Img variant="top" src="holder.js/100px180" />
+          <NavLink to='oneproduct/:id'>
           <Card.Body>
             <Card.Title>Card Title</Card.Title>
             <Card.Text>
               Some quick example text to build on the card title and make up the
               bulk of the cards content.
             </Card.Text>
-            <Button variant="primary">Go somewhere</Button>
           </Card.Body>
+          </NavLink>
         </Card>
         {/* Repite este bloque de Card según sea necesario */}
       </Row>
