@@ -33,7 +33,7 @@ const NewProduct: React.FC = () => {
   }
 
   return (
-    <Container className="mt-5">
+    <Container className="mt-5 text-info">
       <h2 className="text-center mb-4">New Product</h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formTitle">
@@ -56,8 +56,8 @@ const NewProduct: React.FC = () => {
           <Form.Control type="text" placeholder="Enter price" name="price" value={formData.price} onChange={handleChange} />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Submit
+        <Button className='mt-3' variant="info" type="submit">
+        Create ✨
         </Button>
       </Form>
     </Container>
