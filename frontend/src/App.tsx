@@ -43,7 +43,7 @@ const App = (): JSX.Element => {
           />
           <Route
             path='/profile'
-            element={<PublicRoute><Profile /></PublicRoute>}
+            element={<PrivateRoute><Profile /></PrivateRoute>}
           />
       <Route path='/thanks' element={<Thanks/>} />
       <Route path='*' element={<NotFound/>} />
