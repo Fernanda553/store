@@ -41,7 +41,7 @@ const Navigation: React.FC = () => {
 
       <Offcanvas show={showOffcanvas} onHide={handleOffcanvasToggle}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title className='text-white'>Menú</Offcanvas.Title>
+          <Offcanvas.Title className='text-white'>Menu</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <Nav defaultActiveKey="/home" className="flex-column">

@@ -1,28 +1,50 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Button, Card, Container, Row } from 'react-bootstrap'
-import { NavLink } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import StoreContext from '../context/StoreContext'
 
 const Gallery: React.FC = () => {
+  const { addCart, productos } = useContext(StoreContext)
+  const navigate = useNavigate()
+
+  const handlerClick = (id: string): void => {
+    navigate(`/oneproducts/${id}`)
+  }
   return (
     <Container fluid className='p-0' style={{ backgroundColor: '#fff' }}>
       <h2 className="text-center pt-4 m-0">Gallery</h2>
       <Container fluid
       className='vh-100 p-0'>
-      <Row className="scroll-container justify-content-center p-0 m-0">
+      {productos.map((producto) => {
+        return (
+          <Row key={producto?.id} className="scroll-container justify-content-center p-0 m-0">
         <Card style={{ width: '18rem', margin: '10px' }}>
-          <Card.Img variant="top" src="holder.js/100px180" />
-          <NavLink to='oneproduct/:id'>
+          <Card.Img variant="top" src={producto?.img} />
           <Card.Body>
-            <Card.Title>Card Title</Card.Title>
+            <Card.Title>{producto?.title}</Card.Title>
             <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the cards content.
+             {producto.description}
             </Card.Text>
+            <Button
+                  className='m-2'
+                  variant='outline-primary'
+                  onClick={() => { handlerClick(producto.id) }}
+                >
+                  Ver más 👀
+                </Button>
+            <Button
+                  className='m-2'
+                  variant='outline-danger'
+                  onClick={() => { addCart(producto) }}
+                >
+                  Añadir 🛒
+                </Button>
           </Card.Body>
-          </NavLink>
         </Card>
         {/* Repite este bloque de Card según sea necesario */}
       </Row>
+        )
+      })}
       </Container>
     </Container>
   )

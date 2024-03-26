@@ -4,7 +4,31 @@ import { useEffect, useState } from 'react'
 import { ENDPOINT } from '../config/constans'
 import { type Product, type PropsUseCart } from '../interfaces/interfaces'
 
-export const useCart = () => {
+const allMocks = [
+  {
+    id: 'asdasdas.asdasd.asdas',
+    title: 'Vestido de princesa',
+    price: '200',
+    description: 'esta es la descripcion',
+    img: 'https://ae01.alicdn.com/kf/H914957c16b5e4e7eb5e7dd149385ddecb/Ropa-bonita-para-gato-vestido-c-lido-y-agradable-a-la-piel-para-Oto-o-e.jpg'
+  },
+  {
+    id: 'asdasdas.asdasd.jjjjj',
+    title: 'Traje de principe',
+    price: '190',
+    description: 'esta es la descripcion',
+    img: 'https://m.media-amazon.com/images/I/71RcUCvadhL.jpg'
+  },
+  {
+    id: 'asdasdas.asdasd.aaaaa',
+    title: 'Disfraz de abeja',
+    price: '190',
+    description: 'esta es la descripcion',
+    img: 'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/5fac673316782c9121c351332429ae63.jpg?imageView2/2/w/500/q/60/format/webp'
+  }
+]
+
+export const useCart = (): PropsUseCart => {
   const [user, setUser] = useState<PropsUseCart['user']>({ email: '', password: '' })
   const [productos, setProductos] = useState<PropsUseCart['productos']>([])
   const [cart, setCart] = useState<PropsUseCart['cart']>([])
@@ -22,7 +46,7 @@ export const useCart = () => {
     setToken('')
   }
 
-  const getProducts = () => {
+  const getProducts = (): void => {
     axios
       .get(ENDPOINT.products)
       .then(response => {
@@ -38,7 +62,7 @@ export const useCart = () => {
   }, [])
 
   const addCart = (producto: Product): void => {
-    setTotal(+total + +producto.precio)
+    setTotal(+total + +producto.price)
 
     const productoInCart = cart.findIndex((item) => item.id === producto.id)
 
@@ -78,8 +102,8 @@ export const useCart = () => {
     setCart(newCart)
   }
 
-  const addOneMore = (producto: Product) => {
-    setTotal(+total + +producto.precio)
+  const addOneMore = (producto: Product): void => {
+    setTotal(+total + +producto.price)
     const productoInCart = cart.findIndex((item) => item.id === producto.id)
 
     if (productoInCart >= 0) {
