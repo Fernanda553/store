@@ -1,4 +1,4 @@
-const URLBASE = import.meta.env.VITE_URLBASE ?? ''
+const URLBASE = 'https://660323692393662c31ce9d3a.mockapi.io/' ?? ''
 console.log(URLBASE)
 
 export const ENDPOINT = {

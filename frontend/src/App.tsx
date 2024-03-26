@@ -34,7 +34,7 @@ const App = (): JSX.Element => {
             element={<PublicRoute><Register /></PublicRoute>}
           />
           <Route
-            path='/oneproduct/:id'
+            path='/products/:id'
             element={<PublicRoute><OneProduct/></PublicRoute>}
           />
           <Route
