@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import StoreContext from '../context/StoreContext'
 
 const Gallery: React.FC = () => {
-  const { addCart, productos } = useContext(StoreContext)
+  const { addCart, products } = useContext(StoreContext)
   const navigate = useNavigate()
 
   const handlerClick = (id: string): void => {
@@ -15,7 +15,7 @@ const Gallery: React.FC = () => {
     <h2 className="text-center pt-4 m-0">Gallery</h2>
     <Container fluid className='vh-100 p-0'>
       <Row className="scroll-container justify-content-center p-0 m-0">
-        {productos.map((producto) => {
+        {products.map((producto) => {
           return (
             <Card key={producto?.id} style={{ width: '18rem', margin: '10px' }}>
               <Card.Img variant="top" src={producto?.img} />

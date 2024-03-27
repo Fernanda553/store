@@ -2,11 +2,12 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 
 import { ENDPOINT } from '../config/constans'
-import { type Product, type PropsUseCart } from '../interfaces/interfaces'
+import { initialState, type Product, type PropsUseCart } from '../interfaces/interfaces'
 
 export const useCart = (): PropsUseCart => {
   const [user, setUser] = useState<PropsUseCart['user']>({ email: '', password: '' })
-  const [productos, setProductos] = useState<PropsUseCart['productos']>([])
+  const [product, setProduct] = useState<PropsUseCart['product']>(initialState)
+  const [products, setProducts] = useState<PropsUseCart['products']>([])
   const [cart, setCart] = useState<PropsUseCart['cart']>([])
   const [total, setTotal] = useState<PropsUseCart['total']>(0)
   const [isAuthenticated, setIsAuthenticated] = useState<PropsUseCart['isAuthenticated']>(false)
@@ -26,7 +27,7 @@ export const useCart = (): PropsUseCart => {
     axios
       .get(ENDPOINT.products)
       .then(response => {
-        setProductos(response.data)
+        setProducts(response.data)
       })
       .catch(error => {
         console.error('Error al obtener data', error)
@@ -66,7 +67,7 @@ export const useCart = (): PropsUseCart => {
   const removeFromCart = (producto: Product): void => {
     const newCart = cart.flatMap((p) => {
       if (p.id === producto.id) {
-        setTotal(+total - +producto.precio)
+        setTotal(+total - +producto.price)
         if (p.quantity > 1) {
           p.quantity -= 1
           return p
@@ -93,12 +94,14 @@ export const useCart = (): PropsUseCart => {
   return {
     user,
     setUser,
+    product,
+    setProduct,
     isAuthenticated,
     token,
     login,
     logout,
-    productos,
-    setProductos,
+    products,
+    setProducts,
     total,
     setTotal,
     cart,
