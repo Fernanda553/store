@@ -20,7 +20,7 @@ const Gallery: React.FC = () => {
             <Card key={product?.id} style={{ width: '18rem', margin: '10px' }}>
               <Card.Img variant="top" src={product?.img} />
               <Card.Body>
-                <Card.Title>{product?.title}</Card.Title>
+                <Card.Title className='text-white'>{product?.title}</Card.Title>
                 <Card.Text>
                   {product?.description}
                 </Card.Text>
@@ -29,14 +29,14 @@ const Gallery: React.FC = () => {
                   variant='outline-primary'
                   onClick={() => { handlerClick(product.id) }}
                 >
-                  Ver más 👀
+                  See more 👀
                 </Button>
                 <Button
                   className='m-2'
                   variant='outline-danger'
                   onClick={() => { addCart(product) }}
                 >
-                  Añadir 🛒
+                  Add to bag
                 </Button>
               </Card.Body>
             </Card>
