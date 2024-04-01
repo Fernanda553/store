@@ -1,46 +1,51 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import { Button, Container, Image } from 'react-bootstrap'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import StoreContext from '../context/StoreContext'
 
 const Cart: React.FC = () => {
-  const [quantity, setQuantity] = useState(1)
-  const productPrice = 10 // Precio del producto
+  const {
+    addOneMore,
+    cart,
+    clearCart,
+    total,
+    removeFromCart
+  } = useContext(StoreContext)
+  const navigate = useNavigate()
 
-  // TODO: las funciones son a modo de ejemplo para no perderme, esto tiene que con typeScript
-
-  const handleIncrement = () => {
-    setQuantity(quantity + 1)
+  const handlerCart = (): void => {
+    navigate('/thanks')
+    clearCart()
   }
 
-  const handleDecrement = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1)
-    }
-  }
-
-  const totalPrice = quantity * productPrice
+  console.log(cart)
 
   return (
     <Container className="mt-5">
       <h2 className="text-center mb-4">Shopping Cart</h2>
-      <div className="d-flex align-items-center justify-content-center mb-3">
+      {cart.map((product) => {
+        return (
+          <div key={product.id} className="d-flex align-items-center justify-content-center mb-3">
         <NavLink to=''>
-        <Image src="https://via.placeholder.com/150" alt="Product Image" />
+        <Image src={product.img} alt="Product Image" />
         </NavLink>
         <div className="ml-3">
-          <h5>Product Name</h5>
-          <p>Price: ${productPrice}</p>
+          <h5>{product?.title}</h5>
+          <p>Price: ${product.price}</p>
           <div className="d-flex align-items-center">
-            <Button variant="outline-primary" onClick={handleDecrement}>-</Button>
-            <span className="mx-2">{quantity}</span>
-            <Button variant="outline-primary" onClick={handleIncrement}>+</Button>
+            <Button variant="outline-primary" onClick={() => { addOneMore(product) }}>-</Button>
+            <span className="mx-2">{product.quantity * product.price}</span>
+            <Button variant="outline-primary" onClick={() => { removeFromCart(product) }}>+</Button>
           </div>
         </div>
       </div>
+        )
+      })}
       <hr />
       <div className="text-center">
-        <h5>Total: ${totalPrice}</h5>
+        <h5>Total: ${total}</h5>
       </div>
+      <Button variant="ligth" onClick={handlerCart}> Pay</Button>
     </Container>
   )
 }

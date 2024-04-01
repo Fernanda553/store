@@ -38,22 +38,23 @@ export const useCart = (): PropsUseCart => {
     getProducts()
   }, [])
 
-  const addCart = (producto: Product): void => {
-    setTotal(+total + +producto.price)
+  const addCart = (product: Product): void => {
+    setTotal(+total + +product.price)
 
-    const productoInCart = cart.findIndex((item) => item.id === producto.id)
+    const productInCart = cart.findIndex((item) => item.id === product.id)
 
-    if (productoInCart >= 0) {
+    if (productInCart >= 0) {
       const newCart = structuredClone(cart)
-      newCart[productoInCart].quantity += 1
+      newCart[productInCart].quantity += 1
 
-      return setCart(newCart)
+      setCart(newCart)
+      return
     }
 
     setCart((prevState) => [
       ...prevState,
       {
-        ...producto,
+        ...product,
         quantity: 1
       }
     ])
@@ -64,10 +65,10 @@ export const useCart = (): PropsUseCart => {
     setTotal(0)
   }
 
-  const removeFromCart = (producto: Product): void => {
+  const removeFromCart = (product: Product): void => {
     const newCart = cart.flatMap((p) => {
-      if (p.id === producto.id) {
-        setTotal(+total - +producto.price)
+      if (p.id === product.id) {
+        setTotal(+total - +product.price)
         if (p.quantity > 1) {
           p.quantity -= 1
           return p
@@ -79,13 +80,13 @@ export const useCart = (): PropsUseCart => {
     setCart(newCart)
   }
 
-  const addOneMore = (producto: Product): void => {
-    setTotal(+total + +producto.price)
-    const productoInCart = cart.findIndex((item) => item.id === producto.id)
+  const addOneMore = (product: Product): void => {
+    setTotal(+total + +product.price)
+    const productInCart = cart.findIndex((item) => item.id === product.id)
 
-    if (productoInCart >= 0) {
+    if (productInCart >= 0) {
       const newCart = structuredClone(cart)
-      newCart[productoInCart].quantity += 1
+      newCart[productInCart].quantity += 1
 
       return setCart(newCart)
     }

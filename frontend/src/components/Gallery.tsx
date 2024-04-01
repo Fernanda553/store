@@ -15,26 +15,26 @@ const Gallery: React.FC = () => {
     <h2 className="text-center pt-4 m-0">Gallery</h2>
     <Container fluid className='vh-100 p-0'>
       <Row className="scroll-container justify-content-center p-0 m-0">
-        {products.map((producto) => {
+        {products.map((product) => {
           return (
-            <Card key={producto?.id} style={{ width: '18rem', margin: '10px' }}>
-              <Card.Img variant="top" src={producto?.img} />
+            <Card key={product?.id} style={{ width: '18rem', margin: '10px' }}>
+              <Card.Img variant="top" src={product?.img} />
               <Card.Body>
-                <Card.Title>{producto?.title}</Card.Title>
+                <Card.Title>{product?.title}</Card.Title>
                 <Card.Text>
-                  {producto.description}
+                  {product?.description}
                 </Card.Text>
                 <Button
                   className='m-2'
                   variant='outline-primary'
-                  onClick={() => { handlerClick(producto.id) }}
+                  onClick={() => { handlerClick(product.id) }}
                 >
                   Ver más 👀
                 </Button>
                 <Button
                   className='m-2'
                   variant='outline-danger'
-                  onClick={() => { addCart(producto) }}
+                  onClick={() => { addCart(product) }}
                 >
                   Añadir 🛒
                 </Button>
