@@ -1,22 +1,18 @@
 import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
-// import * as routes from './routes/index'
-// import forRoutes from './middlewares/index.js'
+import forRoutes from './middlewares/index'
 
 const PORT = process.env.PORT ?? 3000
 const app = express()
 
 app.use(cors())
 app.use(express.json())
+app.use(forRoutes)
 
-app.get('/', (_, res) => {
+app.get('/ping', (_, res) => {
   res.send('pong')
 })
-// app.use(forRoutes)
-
-// app.use(routes.productos)
-// app.use(routes.usuarios)
 
 app.all('*', (_, res) => res.status(404).json({ code: 404, message: 'Esta ruta no existe 🧐' }))
 
