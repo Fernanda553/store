@@ -1,0 +1,1 @@
+export { default as productos } from './productos.route'
