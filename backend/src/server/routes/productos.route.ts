@@ -7,4 +7,8 @@ router.get('/products', (req: Request, res: Response) => {
     productos.getProducts(req, res)
 })
 
+router.post('/newproduct', (req: Request, res: Response) => {
+    productos.newProduct(req, res)
+})
+
 export default router
