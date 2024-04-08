@@ -3,7 +3,7 @@ import 'dotenv/config'
 import genericSqlQuery from '../databases/db'
 
 // Obtener todos los productos
-export const getProducts = async () => {
+export const getProducts = async (): Promise<[]> => {
   return await genericSqlQuery('SELECT * FROM productos;')
 }
 

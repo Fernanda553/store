@@ -1,17 +1,16 @@
 import { Request, Response } from 'express'
-import HTTP_STATUS from '../../config/constans.js'
-import * as sql from '../models/Productos.dao.js'
-import { Product } from '../../interfaces/products.interfaces.js'
-
+import HTTP_STATUS from '../../config/constans'
+import * as sql from '../models/Productos.dao'
+import { Product } from '../../interfaces/products.interfaces'
 
 export interface ProductsResponse extends Response {
   products: Product[]
 }
 
 // Devolver todos los productos
-export const getProducts = (_: Request , res: ProductsResponse): void => {
+export const getProducts = (_: Request , res: Response | ProductsResponse): void => {
   sql.getProducts()
-    .then((products: Product[]) => {
+    .then((products) => {
       console.log(products)
       products.length > 0
         ? res.status(HTTP_STATUS.ok.code).json(products)
