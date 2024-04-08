@@ -11,4 +11,8 @@ router.post('/newproduct', (req: Request, res: Response) => {
     productos.newProduct(req, res)
 })
 
+router.get('/products/:id', (req: Request, res: Response) => {
+    productos.getProductById(req, res)
+})
+
 export default router

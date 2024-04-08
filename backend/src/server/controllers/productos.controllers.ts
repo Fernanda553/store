@@ -11,6 +11,10 @@ export interface NewProductReq extends Request {
   product: Product
 }
 
+export interface GetProductIdReq extends Request {
+  product: Product
+}
+
 // Devolver todos los productos
 export const getProducts = (_: Request , res: Response | ProductsResponse): void => {
   sql.getProducts()
@@ -31,3 +35,19 @@ export const newProduct = (req: NewProductReq | Request, res: Response) => {
     .then(([product]) => res.status(HTTP_STATUS.created.code).json({ id: product.id, title: product.title, price: product.price }))
     .catch((error) => res.status(HTTP_STATUS.internal_server_error.code).json(error))
 }
+
+// Devolver un producto por su ID
+export const getProductById = (req: GetProductIdReq | Request, res: Response) => {
+  const { id } = req.params
+
+  sql.getProductById(id)
+    .then((product) => {
+      if (product) {
+        res.status(HTTP_STATUS.ok.code).json(product)
+      } else {
+        res.status(HTTP_STATUS.not_found.code).json({ code: HTTP_STATUS.not_found.code, message: 'Producto no encontrado' })
+      }
+    })
+    .catch((error) => res.status(HTTP_STATUS.internal_server_error.code).json(error))
+}
+
