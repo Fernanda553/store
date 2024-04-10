@@ -12,6 +12,7 @@ app.use(express.json())
 app.use(forRoutes)
 
 app.use(routes.productos)
+app.use(routes.usuarios.register)
 
 app.all('*', (_, res) => res.status(404).json({ code: 404, message: 'Esta ruta no existe 🧐' }))
 
