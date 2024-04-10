@@ -1,7 +1,10 @@
-// import { jwtVerify } from '../../utils/jwt.js'
+ import { User } from '../../interfaces/user.interfaces.js'
+import { jwtVerify } from '../../utils/jwt.js'
 import { Request, Response, NextFunction } from 'express'
-import { AuthenticatedRequest } from '../../interfaces/user.interfaces'
 
+export  interface AuthenticatedRequest extends Request {
+  user?: User
+}
 
 export const verifyToken = (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
   const authorizationHeader = req.headers.authorization
