@@ -1,12 +1,12 @@
- import { User } from '../../interfaces/user.interfaces.js'
-import { jwtVerify } from '../../utils/jwt.js'
+ import { User } from '../../interfaces/user.interfaces'
+import { jwtVerify } from '../../utils/jwt'
 import { Request, Response, NextFunction } from 'express'
 
 export  interface AuthenticatedRequest extends Request {
   user?: User
 }
 
-export const verifyToken = (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
+export const verifyToken = (req: AuthenticatedRequest | Request, res: Response, next: NextFunction) => {
   const authorizationHeader = req.headers.authorization
   if (!authorizationHeader) {
     return res.status(401).json({
@@ -14,7 +14,7 @@ export const verifyToken = (req: AuthenticatedRequest, res: Response, next: Next
       message: 'Token no proporcionado'
     })
   }
-  const { bearer, token } = authorizationHeader.split(' ')
+  const[ bearer, token ] = authorizationHeader.split(' ')
   if (bearer !== 'Bearer' || !token) {
     return res.status(401).json({
       code: 401,

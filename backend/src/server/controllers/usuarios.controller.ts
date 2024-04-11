@@ -13,9 +13,6 @@ interface UserRegister extends Request{
 export const register = (req: UserRegister | Request, res: Response) => {
   const { name, email, password } = req.body
   console.log(name, email, password)
-  if (!password) {
-    return res.status(HTTP_STATUS.internal_server_error.code).json({ error: 'La contraseña es requerida' })
-}
   const passEncrypted = encrypt(password)
   sql.createUser(name, email, passEncrypted)
     .then(([user]) => res.status(HTTP_STATUS.created.code).json({ id: user.id, email: user.email }))
@@ -23,7 +20,7 @@ export const register = (req: UserRegister | Request, res: Response) => {
 }
 
 // recibir credenciales y devolver un token
-export const login = async (req: UserRegister, res: Response) => {
+export const login = async (req: UserRegister | Request, res: Response) => {
   const { email, password } = req.body
   const response = await sql.verifyUser(email)
   if (!response.length) return res.status(HTTP_STATUS.not_found.code).json({ code: HTTP_STATUS.not_found.code, message: HTTP_STATUS.not_found.text })
@@ -38,7 +35,7 @@ export const login = async (req: UserRegister, res: Response) => {
 }
 
 // devolver los datos de un usuario
-export const returnUser = (req: UserRegister, res: Response) => {
+export const returnUser = (req: UserRegister | Request, res: Response) => {
   sql.getUser(req.body.email)
     .then(([user]) => {
       user.length > 0

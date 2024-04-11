@@ -1,9 +1,10 @@
 // En productos.dao.js
 import 'dotenv/config'
 import genericSqlQuery from '../databases/db'
+import { Product } from '../../interfaces/products.interfaces'
 
 // Obtener todos los productos
-export const getProducts = async (): Promise<[]> => {
+export const getProducts = async (): Promise<Product[]> => {
   return await genericSqlQuery('SELECT * FROM productos;')
 }
 
