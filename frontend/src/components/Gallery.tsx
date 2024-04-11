@@ -13,9 +13,9 @@ const Gallery: React.FC = () => {
   return (
     <Container fluid className='p-0' style={{ backgroundColor: '#fff' }}>
     <h2 className="text-center pt-4 m-0">Gallery</h2>
-    <Container fluid className='vh-100 p-0'>
+    <Container fluid className='vh-80 p-0'>
       <Row className="scroll-container justify-content-center p-0 m-0">
-        {products.map((product) => {
+        {products?.map((product) => {
           return (
             <Card key={product?.id} style={{ width: '18rem', margin: '10px' }}>
               <Card.Img variant="top" src={product?.img} />
@@ -27,9 +27,9 @@ const Gallery: React.FC = () => {
                 <Button
                   className='m-2'
                   variant='outline-primary'
-                  onClick={() => { handlerClick(product.id) }}
+                  onClick={() => { handlerClick(product?.id) }}
                 >
-                  See more 👀
+                  See more
                 </Button>
                 <Button
                   className='m-2'

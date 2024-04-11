@@ -17,7 +17,6 @@ const OneProduct: React.FC = () => {
       .get(`${baseUrl}/${id}`)
       .then(response => {
         const data: Product = response.data[0]
-        console.log(data)
         setProduct(data)
       })
       .catch(error => {

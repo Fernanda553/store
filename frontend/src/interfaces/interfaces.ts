@@ -5,10 +5,10 @@ export interface User {
 
 export interface Product {
   id: string
-  img: string
-  title: string
-  price: number
-  description: string
+  img?: string
+  title?: string
+  price?: number
+  description?: string
 }
 
 export const initialState: Product = {

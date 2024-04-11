@@ -5,13 +5,13 @@ const Footer: React.FC = () => {
     <footer style={{
       width: '100%',
       height: '100px',
-      backgroundColor: '#343a40',
+      marginTop: '70px',
+      backgroundColor: '#000',
       color: '#fff',
       textAlign: 'center'
     }}>
-      <i className="fab fa-instagram fa-lg mx-3"></i>
-      <i className="fab fa-facebook fa-lg mx-3"></i>
-      <p>@Store</p>
+      <i className="fab fa-instagram fa-lg mx-3"> Store</i>
+      <i className="fab fa-facebook fa-lg mx-3"> Store Chile</i>
   </footer>
   )
 }

@@ -27,7 +27,8 @@ export const useCart = (): PropsUseCart => {
     axios
       .get(ENDPOINT.products)
       .then(response => {
-        setProducts(response.data)
+        const data: Product[] = response.data
+        setProducts(data)
       })
       .catch(error => {
         console.error('Error al obtener data', error)
@@ -40,15 +41,13 @@ export const useCart = (): PropsUseCart => {
 
   const addCart = (product: Product): void => {
     setTotal(+total + +product.price)
-
     const productInCart = cart.findIndex((item) => item.id === product.id)
-
+    console.log(productInCart)
     if (productInCart >= 0) {
       const newCart = structuredClone(cart)
       newCart[productInCart].quantity += 1
-
+      alert('your product is in the bag!🎉')
       setCart(newCart)
-      return
     }
 
     setCart((prevState) => [
@@ -88,7 +87,7 @@ export const useCart = (): PropsUseCart => {
       const newCart = structuredClone(cart)
       newCart[productInCart].quantity += 1
 
-      return setCart(newCart)
+      setCart(newCart)
     }
   }
 
