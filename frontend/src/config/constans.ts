@@ -1,4 +1,4 @@
-const URLBASE = 'https://660323692393662c31ce9d3a.mockapi.io/' ?? ''
+const URLBASE = 'http://localhost:3000' ?? ''
 console.log(URLBASE)
 
 export const ENDPOINT = {

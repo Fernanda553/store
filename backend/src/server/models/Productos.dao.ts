@@ -1,4 +1,3 @@
-// En productos.dao.js
 import 'dotenv/config'
 import genericSqlQuery from '../databases/db'
 import { Product } from '../../interfaces/products.interfaces'

@@ -4,6 +4,7 @@ import { Button, Card, Col, Container, Image, Row } from 'react-bootstrap'
 import StoreContext from '../context/StoreContext'
 import { ENDPOINT } from '../config/constans'
 import { useParams } from 'react-router-dom'
+import { type Product } from '../interfaces/interfaces'
 
 const OneProduct: React.FC = () => {
   const { id } = useParams()
@@ -15,7 +16,9 @@ const OneProduct: React.FC = () => {
     axios
       .get(`${baseUrl}/${id}`)
       .then(response => {
-        setProduct(response.data)
+        const data: Product = response.data[0]
+        console.log(data)
+        setProduct(data)
       })
       .catch(error => {
         console.error('Error al obtener data', error)
@@ -37,7 +40,7 @@ const OneProduct: React.FC = () => {
           <Col xs={12} lg={5}>
             <Card.Title>{product.title}</Card.Title>
             <Card.Text>{product.description}</Card.Text>
-            <Card.Text>Precio: ${product.price}</Card.Text>
+            <Card.Text>Price: ${product.price}</Card.Text>
             <Button variant="primary" onClick={() => { addCart(product) }}>
               Add to bag  ${product.price}
             </Button>
