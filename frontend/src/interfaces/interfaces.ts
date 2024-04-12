@@ -7,7 +7,7 @@ export interface Product {
   id: string
   img?: string
   title?: string
-  price?: number
+  price: number
   description?: string
 }
 
@@ -19,9 +19,15 @@ export const initialState: Product = {
   description: ''
 }
 
-export interface Cart extends Product {
+interface CartItem {
+  id: string
+  img?: string
+  name?: string
+  title?: string
+  price: number
   quantity: number
 }
+
 export interface PropsUseCart {
   user: User
   setUser: React.Dispatch<React.SetStateAction<User>>
@@ -31,8 +37,8 @@ export interface PropsUseCart {
   setProducts: React.Dispatch<React.SetStateAction<Product[]>>
   isAuthenticated: boolean
   token: string
-  cart: Cart[]
-  setCart: React.Dispatch<React.SetStateAction<Cart[]>>
+  cart: CartItem[]
+  setCart: React.Dispatch<React.SetStateAction<CartItem[]>>
   total: number
   setTotal: React.Dispatch<React.SetStateAction<number>>
   login: (jwt: string) => void
