@@ -5,6 +5,10 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import StoreContext from '../context/StoreContext'
 import { ENDPOINT } from '../config/constans'
 
+export interface Data {
+  token: string
+}
+
 const Login: React.FC = () => {
   const { login, user, setUser } = useContext(StoreContext)
   const navigate = useNavigate()
@@ -17,7 +21,8 @@ const Login: React.FC = () => {
     event.preventDefault()
     axios.post(ENDPOINT.login, user)
       .then(({ data }) => {
-        if (data?.token) { login(data.token) }
+        const dataToken = data as Data
+        if (dataToken.token !== '') { login(dataToken.token) }
         navigate('/')
       })
       .catch((error) => {

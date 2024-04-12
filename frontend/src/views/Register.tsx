@@ -12,16 +12,17 @@ const Register: React.FC = () => {
     setUserRegister({ ...userRegister, [event.target.name]: event.target.value })
   }
 
-  const getData = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
-    try {
-      event.preventDefault()
-      const response = await axios.post(ENDPOINT.register, userRegister)
-      window.alert('Usuario registrado con éxito 😀.')
-      console.log(response.data)
-      navigate('/login')
-    } catch (error) {
-      window.alert(`${error.response.data.message} 🙁.`)
-    }
+  const getData = (event: React.FormEvent<HTMLFormElement>): void => {
+    event.preventDefault()
+    axios.post(ENDPOINT.register, userRegister)
+      .then(response => {
+        window.alert('Usuario registrado con éxito 😀.')
+        console.log(response.data)
+        navigate('/login')
+      })
+      .catch(error => {
+        window.alert(`${error.response.data.message} 🙁.`)
+      })
   }
   return (
     <Container className="mt-5">
