@@ -16,7 +16,8 @@
     "react": "18.2.0",
     "react-bootstrap": "^2.10.2",
     "react-dom": "18.2.0",
-    "react-router-dom": "^6.22.2"
+    "react-router-dom": "^6.22.2",
+    "ts-standard": "^12.0.2"
   },
   "devDependencies": {
     "@types/react": "18.2.43",
@@ -24,8 +25,6 @@
     "@typescript-eslint/eslint-plugin": "6.21.0",
     "@typescript-eslint/parser": "6.14.0",
     "@vitejs/plugin-react-swc": "3.5.0",
-    "eslint": "8.57.0",
-    "eslint-config-standard-with-typescript": "43.0.1",
     "eslint-plugin-import": "2.29.1",
     "eslint-plugin-n": "16.6.2",
     "eslint-plugin-promise": "6.1.1",
