@@ -17,7 +17,7 @@ const Gallery: React.FC = () => {
       <Row className="scroll-container justify-content-center p-0 m-0">
         {products?.map((product) => {
           return (
-            <Card key={product?.id} style={{ width: '16rem', margin: '10px', padding: '0' }}>
+            <Card key={product?.id} style={{ width: '18rem', margin: '10px' }}>
               <Card.Img variant="top" src={product?.img} />
               <Card.Body>
                 <Card.Title className='text-white'>{product?.title}</Card.Title>

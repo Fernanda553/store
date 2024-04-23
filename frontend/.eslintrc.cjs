@@ -5,8 +5,7 @@ module.exports = {
     },
     "extends": [
         "standard-with-typescript",
-        "plugin:react/recommended",
-        './node_modules/ts-standard/eslintrc.json'
+        "plugin:react/recommended"
     ],
     "overrides": [
         {
