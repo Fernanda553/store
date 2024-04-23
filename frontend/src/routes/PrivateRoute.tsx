@@ -1,12 +1,8 @@
-import React, { useContext } from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
 import StoreContext from '../context/StoreContext'
+import { useContext } from 'react'
 
-interface PrivateRouteProps {
-  children: React.ReactNode
-}
-
-const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
+const PrivateRoute = ({ children }) => {
   const { isAuthenticated } = useContext(StoreContext)
   const { pathname } = useLocation()
   return (
