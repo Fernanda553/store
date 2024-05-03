@@ -10,7 +10,45 @@ import { OneProduct, Carrito, Home, Login, NewProduct, NotFound, Profile, Regist
 import Navigation from './components/Navigation'
 
 const App = (): JSX.Element => {
-  const allState = useCart()
+  const {
+    user,
+    setUser,
+    product,
+    setProduct,
+    isAuthenticated,
+    token,
+    login,
+    logout,
+    products,
+    setProducts,
+    total,
+    setTotal,
+    cart,
+    addCart,
+    setCart,
+    addOneMore,
+    clearCart,
+    removeFromCart} = useCart()
+
+    const allState = {
+      user,
+      setUser,
+      product,
+      setProduct,
+      isAuthenticated,
+      token,
+      login,
+      logout,
+      products,
+      setProducts,
+      total,
+      setTotal,
+      cart,
+      addCart,
+      setCart,
+      addOneMore,
+      clearCart,
+      removeFromCart}
 
   return (
    <StoreContext.Provider value={allState}>
